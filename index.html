@@ -248,7 +248,75 @@
     </div>
   </div>
  </div>
-  <script>
+
+
+<br></br>
+
+      </main>
+      <footer>
+          <div class="container">
+              <p>© 2024 Сайт с котятами. Варфоломеев Максим.</p>
+          </div>
+      </footer>
+      
+      <script>
+            function updateServiceOptions() {
+                const serviceType = document.querySelector('input[name="serviceType"]:checked').value;
+                const optionsContainer = document.getElementById('optionsContainer');
+                const propertyContainer = document.getElementById('propertyContainer');
+    
+                if (serviceType === "1") {
+                    optionsContainer.style.display = "none";
+                    propertyContainer.style.display = "none";
+                } else if (serviceType === "2") {
+                    optionsContainer.style.display = "block";
+                    propertyContainer.style.display = "none";
+                } else if (serviceType === "3") {
+                    optionsContainer.style.display = "none";
+                    propertyContainer.style.display = "block";
+                }
+            }
+    
+            function calculateTotalCost() {
+                // Расчет стоимости товара
+                const productSelect = document.getElementById('product');
+                const productPrice = parseFloat(productSelect.value);
+                const quantityInput = document.getElementById('quantity');
+                const productQuantity = parseInt(quantityInput.value);
+                let totalProductCost = 0;
+    		
+                if (productPrice > 0 && productQuantity > 0) {
+                    totalProductCost = productPrice * productQuantity;
+                }
+    
+                // Расчет стоимости услуги
+                const serviceType = document.querySelector('input[name="serviceType"]:checked').value;
+                const serviceQuantity = 1;
+                let baseServicePrice = 0; // Базовая цена для всех услуг
+                let totalServiceCost = 0;
+    
+                if (serviceType === "2") {
+                    const optionSelect = document.getElementById('options');
+                    const optionPrice = parseFloat(optionSelect.value);
+                    if (optionPrice > 0 ) {
+                        baseServicePrice += optionPrice;
+                    }
+                } else if (serviceType === "3") {
+                    const propertyChecked = document.getElementById('property').checked;
+                    if (propertyChecked) {
+                        baseServicePrice += 500; // Добавляем стоимость свойства
+                    }
+                }
+    
+                totalServiceCost = baseServicePrice * 1;
+    
+                // Общая стоимость
+                const totalCost = totalProductCost + totalServiceCost;
+                document.getElementById('totalCost').textContent = totalCost;
+            }
+        </script>
+
+<script>
     document.addEventListener('DOMContentLoaded', () => {
         const openFormBtn = document.getElementById('openFormBtn');
         const modal = document.getElementById('modal');
@@ -367,73 +435,6 @@
         }
     });
  </script>
-
-
-<br></br>
-
-      </main>
-      <footer>
-          <div class="container">
-              <p>© 2024 Сайт с котятами. Варфоломеев Максим.</p>
-          </div>
-      </footer>
-      
-      <script>
-            function updateServiceOptions() {
-                const serviceType = document.querySelector('input[name="serviceType"]:checked').value;
-                const optionsContainer = document.getElementById('optionsContainer');
-                const propertyContainer = document.getElementById('propertyContainer');
-    
-                if (serviceType === "1") {
-                    optionsContainer.style.display = "none";
-                    propertyContainer.style.display = "none";
-                } else if (serviceType === "2") {
-                    optionsContainer.style.display = "block";
-                    propertyContainer.style.display = "none";
-                } else if (serviceType === "3") {
-                    optionsContainer.style.display = "none";
-                    propertyContainer.style.display = "block";
-                }
-            }
-    
-            function calculateTotalCost() {
-                // Расчет стоимости товара
-                const productSelect = document.getElementById('product');
-                const productPrice = parseFloat(productSelect.value);
-                const quantityInput = document.getElementById('quantity');
-                const productQuantity = parseInt(quantityInput.value);
-                let totalProductCost = 0;
-    		
-                if (productPrice > 0 && productQuantity > 0) {
-                    totalProductCost = productPrice * productQuantity;
-                }
-    
-                // Расчет стоимости услуги
-                const serviceType = document.querySelector('input[name="serviceType"]:checked').value;
-                const serviceQuantity = 1;
-                let baseServicePrice = 0; // Базовая цена для всех услуг
-                let totalServiceCost = 0;
-    
-                if (serviceType === "2") {
-                    const optionSelect = document.getElementById('options');
-                    const optionPrice = parseFloat(optionSelect.value);
-                    if (optionPrice > 0 ) {
-                        baseServicePrice += optionPrice;
-                    }
-                } else if (serviceType === "3") {
-                    const propertyChecked = document.getElementById('property').checked;
-                    if (propertyChecked) {
-                        baseServicePrice += 500; // Добавляем стоимость свойства
-                    }
-                }
-    
-                totalServiceCost = baseServicePrice * 1;
-    
-                // Общая стоимость
-                const totalCost = totalProductCost + totalServiceCost;
-                document.getElementById('totalCost').textContent = totalCost;
-            }
-        </script>
   </body>
 
 </html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
